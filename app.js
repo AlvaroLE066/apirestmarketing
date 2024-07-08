@@ -22,10 +22,15 @@ app.use(cors(corsOptions));
 
 // parametros para la conexion
 var conexion = mysql.createConnection({
-    host: 'localhost',
+    /*host: 'localhost',
     user:'root',
     password:'',
-    database:'marketing_db'
+    database:'marketing_db'*/
+    host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME
+
 });
 
 
