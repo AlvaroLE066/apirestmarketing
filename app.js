@@ -14,6 +14,7 @@ app.use(cors());
 //  Especiica el origen exacto (recomendado para producción)
 var corsOptions = {
     origin: 'http://localhost:5173',  // Asegúrate que este sea el puerto y protocolo donde se ejecuta tu cliente Vue.js
+    //origin: 'https://mktlapaz.esam.edu.bo',
     optionsSuccessStatus: 200
 };
 
