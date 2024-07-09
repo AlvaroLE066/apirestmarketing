@@ -61,7 +61,7 @@ if(error)
 
 
 app.get('/', function(req, res){
-    res.send('ruta INICIO')
+    res.send('ruta INICIOnueva ')
 })
 
 // mostrar todos las programas
