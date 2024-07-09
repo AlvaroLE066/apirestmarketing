@@ -13,8 +13,8 @@ app.use(cors());
 
 //  Especiica el origen exacto (recomendado para producción)
 var corsOptions = {
-    origin: 'http://localhost:5173',  // Asegúrate que este sea el puerto y protocolo donde se ejecuta tu cliente Vue.js
-    //origin: 'https://mktlapaz.esam.edu.bo',
+    //origin: 'http://localhost:5173',  // Asegúrate que este sea el puerto y protocolo donde se ejecuta tu cliente Vue.js
+    origin: 'https://mktlapaz.esam.edu.bo',
     optionsSuccessStatus: 200
 };
 
@@ -26,11 +26,11 @@ var conexion = mysql.createConnection({
     user:'root',
     password:'',
     database:'marketing_db'*/
- host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
-  port: process.env.DB_PORT // Incluye el puerto aquí
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT
 
 
 });
