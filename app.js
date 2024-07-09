@@ -35,8 +35,9 @@ var conexion = mysql.createConnection({
 
 });
 
-
-const wss = new WebSocket.Server({ port: 8080 });
+const wsPort = process.env.WS_PORT || 8080;
+const wss = new WebSocket.Server({ port: wsPort });
+//const wss = new WebSocket.Server({ port: 8080 });
 wss.on('connection', ws => {
     ws.on('message', message => {
       // Cuando se recibe un mensaje, reenviar a todos los clientes conectados
@@ -346,10 +347,15 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads'), {
         res.set('Access-Control-Allow-Headers', 'Content-Type');
     }
 }));
-
+/*
 const puerto = process.env.PUERTO || 3000;
 
 app.listen(puerto,function()
 {
     console.log("Servidor Ok en puerto:" + puerto);
+});*/
+const port = process.env.PORT || 3000;
+
+app.listen(port, function() {
+    console.log("Servidor Ok en puerto:" + port);
 });
