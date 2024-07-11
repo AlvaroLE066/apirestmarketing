@@ -10,7 +10,6 @@ var app = express();
 app.use(express.json());
 app.use(cors());
 
-// Endpoint para generar URL corta
 
 //  Especiica el origen exacto (recomendado para producción)
 var corsOptions = {
@@ -338,6 +337,7 @@ app.get('/api/portada_programa', (req, res) => {
         }
     });
 });
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
 /* Permite que las imágenes almacenadas en el directorio uploads puedan ser accedidas 
