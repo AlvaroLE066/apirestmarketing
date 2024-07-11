@@ -6,10 +6,13 @@ var path = require('path');
 var WebSocket = require('ws');
 
 var app = express();
+
 app.use(express.json());
 app.use(cors());
 
+app.use(bodyParser.json());
 
+// Endpoint para generar URL corta
 
 //  Especiica el origen exacto (recomendado para producción)
 var corsOptions = {
