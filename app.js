@@ -6,16 +6,40 @@ var path = require('path');
 var WebSocket = require('ws');
 
 var app = express();
+
+
+const shortid = require('shortid');
+const bodyParser = require('body-parser');
+
 app.use(express.json());
 app.use(cors());
 
+app.use(bodyParser.json());
 
-
+const urlMapping = {};
+// Endpoint para generar URL corta
+app.post('/api/generate-short-url', (req, res) => {
+    const { Cod_Programa, Nombre } = req.body;
+    const shortUrl = shortid.generate();
+    urlMapping[shortUrl] = { Cod_Programa, Nombre };
+    res.json({ shortUrl });
+  });
+  
+  // Endpoint para resolver URL corta
+  app.get('/api/resolve-short-url/:shortUrl', (req, res) => {
+    const { shortUrl } = req.params;
+    const data = urlMapping[shortUrl];
+    if (data) {
+      res.json(data);
+    } else {
+      res.status(404).send('URL no encontrada');
+    }
+  });
 //  Especiica el origen exacto (recomendado para producción)
 var corsOptions = {
     //origin: 'http://localhost:5173',  // Asegúrate que este sea el puerto y protocolo donde se ejecuta tu cliente Vue.js
     //origin: 'https://mktlapaz.esam.edu.bo/',
-        origin: '*',
+    origin: '*',
     optionsSuccessStatus: 200
 };
 
